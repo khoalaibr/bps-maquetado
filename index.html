@@ -15,43 +15,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Barlow:wght@300;400;700&display=swap" rel="stylesheet">
     
     <!-- Script externo (vacío por ahora, pero preparado para futura funcionalidad) -->
-
-    
     <script src="script.js" defer></script>
 </head>
-<body>
+<body class="body">
     <!-- Header -->
     <header class="header">
-        <div class="logo">
+        <div class="header__logo">
             <!-- Logo del sitio -->
             <img src="logo.png" alt="Logo del sitio">
         </div>
-        <nav class="nav">
+        <nav class="header__nav">
             <!-- Menú de navegación alineado a la derecha -->
             <ul class="nav-menu">
-                <li><a href="#">Pasivos</a></li>
-                <li><a href="#" class="nav--activa">Activos</a></li>
+                <li class="nav-menu__item"><a href="#" class="nav-menu__link">Pasivos</a></li>
+                <li class="nav-menu__item"><a href="#" class="nav-menu__link nav-menu__link--activa">Activos</a></li>
             </ul>
-            
         </nav>
-        <div class="user-register">
+        <div class="header__user-register">
             <!-- Espacio para registro de usuario -->
         </div>
     </header>
 
     <!-- Barra lateral -->
-    <aside class="sidebar collapsed">
-        <ul>
-            <li>
-                <i class="fa fa-home"></i>
-                <span class="sidebar-text">Inicio</span>
+    <aside class="sidebar sidebar--collapsed">
+        <ul class="sidebar__list">
+            <li class="sidebar__item">
+                <i class="sidebar__icon fa fa-home"></i>
+                <span class="sidebar__text">Inicio</span>
             </li>
-            <li class="item--activo">
-                <i class="fa-solid fa-share-from-square"></i>
-                <span class="sidebar-text">Informes</span>
+            <li class="sidebar__item sidebar__item--activo">
+                <i class="sidebar__icon fa-solid fa-share-from-square"></i>
+                <span class="sidebar__text">Informes</span>
             </li>
             <!-- Botón para expandir/colapsar la barra lateral -->
-            <li class="toggle-btn">
+            <li class="sidebar__item sidebar__toggle-btn">
                 <i class="fa fa-angle-right"></i>
             </li>
         </ul>
@@ -60,14 +57,14 @@
     <!-- Contenedor principal -->
     <main class="container">
         <!-- Sección de dos columnas -->
-        <section class="left-column">
+        <section class="container__left-column">
             <!-- Contenido principal -->
-            <h1>Resultado</h1>
-            <p>Resultado de la depuracion de archivos</p>
+            <h1 class="heading-primary">Resultado</h1>
+            <p>Resultado de la depuración de archivos</p>
         </section>
-        <section class="right-column">
+        <section class="container__right-column">
             <!-- Contenido secundario -->
-            <h2>Botones</h2>
+            <h2 class="heading-secondary">Botones</h2>
             <p>Contenido secundario aquí...</p>
         </section>
     </main>
@@ -80,16 +77,16 @@
     <!-- Script para manejar la interacción con la barra lateral -->
     <script>
         // Selecciona el botón de toggle, la barra lateral y el logo
-        const toggleBtn = document.querySelector('.toggle-btn');
+        const toggleBtn = document.querySelector('.sidebar__toggle-btn');
         const sidebar = document.querySelector('.sidebar');
         const toggleIcon = toggleBtn.querySelector('i');
-        const logo = document.querySelector('.logo');
+        const logo = document.querySelector('.header__logo');
 
         // Funcionalidad para expandir/colapsar la barra lateral
         function toggleSidebar() {
-            sidebar.classList.toggle('collapsed');
+            sidebar.classList.toggle('sidebar--collapsed');
             // Cambia el ícono de la flecha
-            if (sidebar.classList.contains('collapsed')) {
+            if (sidebar.classList.contains('sidebar--collapsed')) {
                 toggleIcon.classList.remove('fa-angle-left');
                 toggleIcon.classList.add('fa-angle-right');
             } else {
