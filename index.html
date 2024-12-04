@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos esenciales -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitio Web Escalable</title>
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Enlace a FontAwesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Script externo (vacío por ahora, pero preparado para futura funcionalidad) -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <!-- Logo del sitio -->
+            <img src="logo.png" alt="Logo del sitio">
+        </div>
+        <nav class="nav">
+            <!-- Menú de navegación alineado a la derecha -->
+            <ul class="nav-menu">
+                <li><a href="#">Pasivos</a></li>
+            </ul>
+        </nav>
+        <div class="user-register">
+            <!-- Espacio para registro de usuario -->
+        </div>
+    </header>
+
+    <!-- Barra lateral -->
+    <aside class="sidebar collapsed">
+        <ul>
+            <li>
+                <i class="fa fa-home"></i>
+                <span class="sidebar-text">Inicio</span>
+            </li>
+            <li>
+                <i class="fa-solid fa-share-from-square"></i>
+                <span class="sidebar-text">Informes</span>
+            </li>
+            <!-- Botón para expandir/colapsar la barra lateral -->
+            <li class="toggle-btn">
+                <i class="fa fa-angle-right"></i>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Contenedor principal -->
+    <main class="container">
+        <!-- Sección de dos columnas -->
+        <section class="left-column">
+            <!-- Contenido principal -->
+            <h1>Resultado</h1>
+            <p>Resultado de la depuracion de archivos</p>
+        </section>
+        <section class="right-column">
+            <!-- Contenido secundario -->
+            <h2>Botones</h2>
+            <p>Contenido secundario aquí...</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; BPS</p>
+    </footer>
+
+    <!-- Script para manejar la interacción con la barra lateral -->
+    <script>
+        // Selecciona el botón de toggle, la barra lateral y el logo
+        const toggleBtn = document.querySelector('.toggle-btn');
+        const sidebar = document.querySelector('.sidebar');
+        const toggleIcon = toggleBtn.querySelector('i');
+        const logo = document.querySelector('.logo');
+
+        // Funcionalidad para expandir/colapsar la barra lateral
+        function toggleSidebar() {
+            sidebar.classList.toggle('collapsed');
+            // Cambia el ícono de la flecha
+            if (sidebar.classList.contains('collapsed')) {
+                toggleIcon.classList.remove('fa-angle-left');
+                toggleIcon.classList.add('fa-angle-right');
+            } else {
+                toggleIcon.classList.remove('fa-angle-right');
+                toggleIcon.classList.add('fa-angle-left');
+            }
+        }
+
+        // Agrega un evento de clic al botón de toggle
+        toggleBtn.addEventListener('click', toggleSidebar);
+
+        // Agrega un evento de clic al logo para expandir/colapsar la barra lateral
+        logo.addEventListener('click', toggleSidebar);
+    </script>
+</body>
+</html>

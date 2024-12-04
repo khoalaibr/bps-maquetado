@@ -1,0 +1,226 @@
+/* Variables CSS para colores y tipografías */
+:root {
+    /* Colores */
+    --color-primario: #21355b; /* Azul */
+    --color-primario-oscuro: #182542;
+    --color-secundario: #00ace7; /* Gris */
+    --color-acentuado: #099595; /* Color complementario (verde) */
+    --color-fondo: #f7f7f7; /* Fondo claro */
+    --color-texto: #343639; /* Texto oscuro */
+    --color-texto-claro: #75777b;
+
+    /* Tipografías */
+    --fuente-principal: 'Roboto', sans-serif;
+    --fuente-secundaria: 'Lato', sans-serif;
+
+    /* Tamaños */
+    --ancho-sidebar-colapsada: 40px;
+    --ancho-sidebar-expandida: 200px;
+    --transicion: 0.3s ease;
+
+    --ancho-header: 60px;
+}
+
+/* Estilos globales */
+body {
+    margin: 0;
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+h1, h2{
+    color: var(--color-secundario);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    color: var(--color-texto);
+    height: var(--ancho-header);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.logo{
+    height: var(--ancho-header);
+    width: var(--ancho-sidebar-expandida);
+    background-color: var(--color-primario);
+    text-align: center;
+}
+/* Logo */
+.logo img {
+    max-height: 60px;
+    cursor: pointer;
+}
+
+/* Menú de navegación */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    margin-left: 20px;
+}
+
+.nav-menu li a {
+    color: var(--color-texto);
+    text-decoration: none;
+    font-family: var(--fuente-secundaria);
+}
+
+/* Barra lateral */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--ancho-sidebar-expandida);
+    background-color: var(--color-primario-oscuro);
+    color: white;
+    overflow-x: hidden;
+    transition: width var(--transicion);
+    padding-top: var(--ancho-header);
+    z-index: 999;
+}
+
+.sidebar.collapsed {
+    width: var(--ancho-sidebar-colapsada);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.sidebar li:hover {
+    background-color: var(--color-secundario);
+}
+
+.sidebar i {
+    margin-right: 10px;
+}
+
+.sidebar .sidebar-text {
+    /* Oculta el texto cuando la barra lateral está colapsada */
+    transition: opacity var(--transicion);
+}
+
+.sidebar.collapsed .sidebar-text {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Botón de toggle */
+.toggle-btn {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Contenedor principal */
+.container {
+    margin-left: var(--ancho-sidebar-expandida);
+    padding: 20px;
+    transition: margin-left var(--transicion);
+    padding-top: calc(var(--ancho-header) + 20px);
+}
+
+.sidebar.collapsed ~ .container {
+    margin-left: var(--ancho-sidebar-colapsada);
+}
+
+/* Columnas */
+.left-column, .right-column {
+    padding: 20px;
+    font-family: var(--fuente-secundaria);
+}
+
+.left-column {
+    width: 70%;
+    float: left;
+}
+
+.right-column {
+    width: 30%;
+    float: right;
+}
+
+/* Limpiar floats */
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--color-primario);
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    font-family: var(--fuente-secundaria);
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    /* Ajustes para tabletas */
+    .left-column, .right-column {
+        width: 100%;
+        float: none;
+    }
+
+    .container {
+        margin-left: var(--ancho-sidebar-expandida);
+    }
+
+    .sidebar.collapsed ~ .container {
+        margin-left: var(--ancho-sidebar-colapsada);
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes para móviles */
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+    }
+
+    .nav-menu li {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .container {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        display: none;
+    }
+}
