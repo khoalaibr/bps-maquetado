@@ -10,7 +10,7 @@
     --color-texto-claro: #75777b;
 
     /* Tipografías */
-    --fuente-principal: 'Roboto', sans-serif;
+    --fuente-principal: 'Barlow', sans-serif;
     --fuente-secundaria: 'Lato', sans-serif;
 
     /* Tamaños */
@@ -66,17 +66,38 @@ h1, h2{
     display: flex;
     margin: 0;
     padding: 0;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .nav-menu li {
-    margin-left: 20px;
+    flex-grow: 1;
+    text-align: center;
 }
 
 .nav-menu li a {
-    color: var(--color-texto);
+    color: var(--color-secundario);
     text-decoration: none;
-    font-family: var(--fuente-secundaria);
+    text-transform: uppercase;
+    font-family: var(--fuente-principal);
+    display: block;
+    padding: 10px;
+    height: 40px;
+    align-content: center;
 }
+
+.nav-menu li a:hover {
+    background-color: var(--color-fondo);
+    border-bottom: var(--color-secundario) 2px solid;
+    font-weight: 600;
+}
+
+.nav-menu li a.nav--activa {
+    background-color: var(--color-secundario);
+    color: #fff !important;
+    font-weight: 600;
+}
+
 
 /* Barra lateral */
 .sidebar {
@@ -106,11 +127,15 @@ h1, h2{
 .sidebar li {
     display: flex;
     align-items: center;
-    padding: 15px;
+    padding: 15px 10px;
     cursor: pointer;
 }
 
 .sidebar li:hover {
+    background-color: var(--color-secundario);
+}
+
+.item--activo {
     background-color: var(--color-secundario);
 }
 
